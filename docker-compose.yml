@@ -1,0 +1,40 @@
+version: '3.2'
+
+services:
+
+  nginx:
+    image: nginx:1.20.2
+    links:
+      - php
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - php
+      - mysql
+
+  php:
+#    image: php:8.2-fpm
+    build: ./php
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - MYSQL_DATABASE=app
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=secret
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mariadb:10.10
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=verysecret
+      - MYSQL_DATABASE=app
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=secret

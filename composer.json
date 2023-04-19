@@ -1,15 +1,17 @@
 {
-    "name": "empty/empty",
-    "description": "Empty project with no dependency",
-    "type": "library",
-    "keywords": ["test", "empty", "null", "void"],
+    "name": "ftinkere/test-task",
+    "description": "Test task",
+    "type": "project",
+    "keywords": ["test"],
     "license": "WTFPL",
-    "homepage": "https://github.com/ozh/empty-empty",
     "authors": [
         {
-            "name": "Ozh",
-            "email": "ozh@ozh.org"
+            "name": "ftinkere",
+            "email": "ftinkere@ya.ru"
         }
     ],
-    "require": {}
+    "require": {
+        "ext-mysqli": "*",
+        "ext-pdo": "*"
+    }
 }
