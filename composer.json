@@ -12,6 +12,8 @@
     ],
     "require": {
         "ext-mysqli": "*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-curl": "*",
+        "ext-simplexml": "*"
     }
 }

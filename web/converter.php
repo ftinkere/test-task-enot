@@ -1,11 +1,12 @@
 <?php
 require_once "../utils/boot.php";
+require_once "../utils/parse.php"; // Костыль из-за неработающего cron
 
 flash();
 $result ="";
 
 $db = db();
-$statement = $db->prepare('SELECT * FROM `rates` ORDER BY `datetime` DESC');
+$statement = $db->prepare('SELECT * FROM `rates` WHERE datetime = (SELECT MAX(datetime) FROM rates)');
 $statement->execute();
 $result  = $statement->get_result();
 if ($result->num_rows == 0) {
@@ -14,7 +15,10 @@ if ($result->num_rows == 0) {
     die; // Остановка выполнения скрипта
 }
 $rates = $result->fetch_assoc();
-
+?>
+Курс доллара: <?= $rates['usd'] ?> RUB <br>
+Курс евро: <?= $rates['eur'] ?> RUB <br>
+<?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_POST['currency_from'] == "rub") {
         if ($_POST['currency_to'] == "rub") {
