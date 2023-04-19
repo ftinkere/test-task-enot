@@ -1,18 +1,20 @@
-# empty/empty
+# Тестовое задание для Enot
 
-> composer require empty/empty
+Требуется сделать стандартный комплект авторизации/регистрации (логин/пароль) с использование базы данных.
+Написать парсер курсов валют с ЦБ РФ, который будет сохранять в базу каждые 3 часа валюты с актуальными курсами.
+В личном кабинете пользователя сделать конвертер со всех спаршенных валют в рубли и наоборот.
 
-Composer package with no code and no dependency
+Требования:
+•  PHP 7.4+
+•  Без фреймворков
+•  Mysql или Postgresql
+•  ООП
+•  Composer
 
-## Why ?
+## Установка
+Требуется поднять докер
+`docker compose up`
 
-Testing purposes.
+И приенить скрипт `db/init.sql` к базе данных после первого запуска
 
-Also, I found that an easy way to regenerate a `composer.lock` file and its `content-hash` was to do:
-
-```bash
-composer require empty/empty
-composer remove empty/empty
-```
-
-(before this feature is added to Composer 2.0)
+После этого можно переходить на `127.0.0.1` в браузере
