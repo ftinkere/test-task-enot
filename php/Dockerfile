@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y libc-client-dev libkrb5-dev supervisor 
 
 COPY ./supervisord.conf /etc/supervisor/supervisord.conf
 
-COPY ./crontab /etc/cron.d/crontab
+COPY ./crontab /etc/crontab
+RUN crontab /etc/crontab
 
 CMD ["/usr/bin/supervisord"]

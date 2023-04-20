@@ -1,12 +1,12 @@
 <?php
-require_once "../utils/boot.php";
+require_once __DIR__ . "/../utils/boot.php";
 
 function get_currency($currency_code, $format) {
 
     $date = date('d/m/Y'); // Текущая дата
     $cache_time_out = 10800; // Время жизни кэша в секундах
 
-    $file_currency_cache = '../db/currency.xml'; // Файл кэша
+    $file_currency_cache = __DIR__ . '/../db/currency.xml'; // Файл кэша
 
     if(!is_file($file_currency_cache) || filemtime($file_currency_cache) < (time() - $cache_time_out)) {
         $ch = curl_init();

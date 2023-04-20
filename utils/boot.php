@@ -1,5 +1,5 @@
 <?php
-include '../vendor/autoload.php';
+include __DIR__ . '/../vendor/autoload.php';
 
 session_start();
 date_default_timezone_set('Europe/Moscow');
